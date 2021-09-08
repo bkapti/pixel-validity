@@ -61,10 +61,6 @@ def clean_url(url: str) -> list:
     else:
         if str(url)[0] == "[" and str(url[len(url) - 1]) == "]":
             return (str(url).replace("\\", "").replace('"', ""))[1:-1].split(",")
-        elif str(url)[0] == "[":
-            return (str(url).replace("\\", "").replace('"', ""))[1:].split(",")
-        elif str(url[len(url) - 1]) == "]":
-            return (str(url).replace("\\", "").replace('"', ""))[:-1].split(",")
         else:
             return (str(url).replace("\\", "").replace('"', "")).split(",")
 
