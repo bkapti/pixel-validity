@@ -1,5 +1,4 @@
 import os
-
 import pandas as pd
 import aiohttp
 import asyncio
@@ -11,6 +10,11 @@ number_exceptions = 0
 df_failed = pd.DataFrame(columns={"tactic_id", "url"})
 df_valid = pd.DataFrame(columns={"tactic_id", "url"})
 df_exceptions = pd.DataFrame(columns={"tactic_id", "url", "exception"})
+
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
+    "Chrome/70.0.3538.77 Safari/537.36"
+}
 
 
 def ingest_file(file_path: str) -> pd.DataFrame:
@@ -83,7 +87,7 @@ async def fire_up_pixel(session, url, tactic_id) -> None:
 
     global number_ok, number_failed, number_exceptions, number_of_urls_processed, df_failed, df_valid, df_exceptions
     try:
-        async with session.get(url) as response:
+        async with session.get(url, headers=headers) as response:
             number_of_urls_processed += 1
             if 200 <= response.status < 400:
                 number_ok += 1
