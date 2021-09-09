@@ -12,8 +12,8 @@ df_valid = pd.DataFrame(columns={"tactic_id", "url"})
 df_exceptions = pd.DataFrame(columns={"tactic_id", "url", "exception"})
 
 headers = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
-    "Chrome/70.0.3538.77 Safari/537.36"
+    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 "
+                  "Safari/537.36 "
 }
 
 
@@ -161,7 +161,8 @@ def print_results(duration: float) -> None:
     """
     global number_ok, number_failed, number_exceptions, number_of_urls_processed
     print(
-        f"{number_of_urls_processed} urls are processed in {duration} seconds.\nHere are the summary of them:"
+        f"{number_of_urls_processed+number_exceptions} urls are processed in {duration} seconds.\n"
+        f"Here are the summary of them:"
     )
     print(f"number_ok: {number_ok}")
     print(f"number_failed: {number_failed}")
