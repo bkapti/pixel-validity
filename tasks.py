@@ -1,3 +1,5 @@
+import os
+
 import pandas as pd
 import aiohttp
 import asyncio
@@ -169,6 +171,13 @@ def write_results_to_csv() -> None:
     :return: None. This function will create csv files in the local results folder.
     """
     global df_valid, df_failed, df_exceptions
+
+    file_path = os.path.join("results")
+    if not os.path.exists(file_path):
+        try:
+            os.makedirs(file_path, exist_ok=True)
+        except OSError:
+            print(f"Directories {file_path} can not be created.")
 
     df_valid.to_csv("results/valid_urls.csv")
     df_failed.to_csv("results/failed_urls.csv")
