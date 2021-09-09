@@ -31,9 +31,11 @@ For this run:
 
 Once you run above code, you'll see the name of the ENV_DIR appear at the beginning of the path in terminal.
 
-install required packages by running:
+```(ENV_DIR)$ ```
 
-```(ENV_DIR) $ pip install -r requirements.txt```
+install required packages by running: (cd into /pixel-validity)
+
+```pip install -r requirements.txt```
 
 To deactivate the virtual environment just run: 
 
