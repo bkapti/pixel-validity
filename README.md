@@ -27,7 +27,7 @@ For this run:
 
 ```python3 -m venv ENV_DIR```
 
-```$. ./ENV_DIR/bin/activate```
+```source ./ENV_DIR/bin/activate```
 
 Once you run above code, you'll see the name of the ENV_DIR appear at the beginning of the path in terminal.
 
