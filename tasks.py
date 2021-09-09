@@ -11,11 +11,6 @@ df_failed = pd.DataFrame(columns={"tactic_id", "url"})
 df_valid = pd.DataFrame(columns={"tactic_id", "url"})
 df_exceptions = pd.DataFrame(columns={"tactic_id", "url", "exception"})
 
-headers = {
-    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 "
-                  "Safari/537.36 "
-}
-
 
 def ingest_file(file_path: str) -> pd.DataFrame:
     """
@@ -87,7 +82,7 @@ async def fire_up_pixel(session, url, tactic_id) -> None:
 
     global number_ok, number_failed, number_exceptions, number_of_urls_processed, df_failed, df_valid, df_exceptions
     try:
-        async with session.get(url, headers=headers) as response:
+        async with session.get(url) as response:
             number_of_urls_processed += 1
             if 200 <= response.status < 400:
                 number_ok += 1
